@@ -1,0 +1,195 @@
+/* Reset some default browser styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Body and General Styles */
+body {
+    background-color: #212225;
+    color: #FFFFFF;
+    padding: 20px;
+}
+
+/* Header Styles */
+.header {
+    background-color: #293556;
+    padding: 20px;
+    text-align: center;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.header h3 {
+    color: #FFFFFF;
+    font-size: 1.8rem;
+}
+
+/* Main Content Styles */
+.main {
+    background-color: #293556;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Date Navigation */
+.date {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    width: 60%;
+}
+
+.date button {
+    background-color: #03DAC5;
+    border: none;
+    color: #1E1E2F;
+    padding: 8px;
+    border-radius: 100%;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.date button img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+.date button:hover {
+    background-color: rgb(0, 255, 255);
+
+}
+
+/* Workout Table */
+.workout-table {
+    background-color: #2E4583;
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    border-radius: 20px;
+}
+
+.workout-table th {
+    text-align: center;
+    padding: 15px;
+}
+
+.workout-table td {
+    padding: 15px;
+    text-align: center;
+}
+
+.workout-table td ul{
+    list-style: none;
+
+}
+
+.workout-table tbody tr,
+.workout-table thead {
+    border-bottom: 1px solid #3C3F58;
+}
+
+
+/* Log Button */
+.workout-table button {
+    background-color: #03DAC5;
+    border: none;
+    color: #1E1E2F;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.workout-table button:hover {
+    background-color: rgb(0, 255, 255);
+}
+
+/* Edit Workout Section */
+.edit-workout {
+    display: flex;
+    justify-content: space-around;
+    width: 60%;
+}
+
+.edit-workout-btn {
+    background-color: #03DAC5;
+    border: none;
+    color: #1E1E2F;
+    padding: 5px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.edit-workout-btn:hover {
+    background-color: rgb(0, 255, 255);
+}
+
+.edit-workout-btn img {
+    height: 20px;
+    width: 20px;
+}
+
+/* Navigation Bar */
+.nav-bar {
+    background-color: #293556;
+    border-radius: 8px;
+    overflow: hidden;
+    padding: 5px;
+}
+
+.nav-bar ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    padding: 0;
+}
+
+.nav-bar img {
+    width: 40px;
+    height: 40px;
+}
+
+.nav-bar a {
+    background-color: #03DAC5;
+    color: #FFFFFF;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 6px;
+    transition: background-color 0.3s;
+}
+
+.nav-bar a:hover {
+    background-color: rgb(0, 255, 255);
+}
+
+
+.nav-bar li {
+    text-align: center;
+}
+
+.nav-bar a {
+    text-decoration: none; /* Removes the underline from the link */
+    display: block;
+    text-align: center;
+}
+
+.nav-bar span {
+    display: block;
+    margin-top: 5px; /* Space between the image and text */
+    font-size: 14px; /* Adjust text size */
+    color: #1E1E2F; /* Change text color */
+}
