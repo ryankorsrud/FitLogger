@@ -108,6 +108,9 @@ def get_workout_log():
     return jsonify(workout_data)
 
 
+@app.route('/save_program', methods=['POST'])
+def save_program():
+    data = request.json
 
 
 if __name__ == '__main__':

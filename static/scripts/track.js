@@ -1,7 +1,3 @@
-
-
-
-
 function removeRow() {
     const button = event.target.closest('button');
     const row = button.closest('tr'); // row containing exercise
@@ -12,10 +8,8 @@ function removeRow() {
 
 
 function addRow() {
-    // Get the table body to insert new rows
     const tbody = document.querySelector('.workout-log tbody');
 
-    // Create new row for the exercise
     const exerciseRow = document.createElement('tr');
     exerciseRow.innerHTML = `
         <td style="display: flex; justify-content: center;"><input style="width: 100%;" type="text" class="exercise-name" placeholder="Exercise"></td>
@@ -34,7 +28,6 @@ function addRow() {
         </td>
     `;
 
-    // Create the "Add Set" row
     const addSetRow = document.createElement('tr');
     addSetRow.innerHTML = `
         <td></td>
@@ -47,23 +40,16 @@ function addRow() {
         <td></td>
     `;
 
-    // Append the exercise and add set rows to the table
     tbody.appendChild(exerciseRow);
     tbody.appendChild(addSetRow);
 }
 
 function addSet(button) {
-    // Get the parent row of the "Add Set" button
     const row = button.closest('tr');
-
-    // Find the exercise row above it
     const exerciseRow = row.previousElementSibling;
-
-    // Find the <ul> elements for reps and weight
     const repsList = exerciseRow.querySelector('td:nth-child(2) ul');
     const weightList = exerciseRow.querySelector('td:nth-child(3) ul');
 
-    // Add a new <li> to both the reps and weight lists
     const newRepsItem = document.createElement('li');
     newRepsItem.innerHTML = '<input class="reps" type="text" placeholder="Log">';
     repsList.appendChild(newRepsItem);
@@ -94,15 +80,14 @@ function finishWorkout() {
         : cell.textContent.trim()
         : undefined;
 
-        const reps = row.querySelectorAll('.reps'); // Get all the reps input elements in the row
-        const weights = row.querySelectorAll('.weight'); // Get all the weight input elements in the row
+        const reps = row.querySelectorAll('.reps');
+        const weights = row.querySelectorAll('.weight');
 
         if (exercise) {
             if (!workoutData[exercise]) {
                 workoutData[exercise] = [];
             }
 
-            // Iterate over the number of sets (reps and weights)
             for (let i = 0; i < reps.length; i++) {
                 const rep = reps[i].value;
                 const weight = weights[i].value;
@@ -116,7 +101,6 @@ function finishWorkout() {
         }
     });
 
-    // Send data to the Flask server
     fetch('/save_workout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
