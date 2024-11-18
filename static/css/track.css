@@ -99,4 +99,5 @@
     margin-left: 3px;
     height: 15px;
     width: 15px;
+    filter: invert(56%) sepia(7%) saturate(919%) hue-rotate(173deg) brightness(97%) contrast(93%);
 }

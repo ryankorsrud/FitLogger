@@ -21,7 +21,7 @@
                 <thead>
                     <th>Exercise</th>
                     <th>Reps</th>
-                    <th>Weight (lbs)</th>
+                    <th>Weight</th>
                     <th></th>
                 </thead>
                 <tbody>
@@ -39,7 +39,7 @@
                         </td>
                         <td style="padding: 0px;"><button onclick="removeRow(this)" class="error"><img src="/static/images/delete.svg"></button></td>
                     </tr>
-                    <tr>
+                    <tr class="add-set">
                         <td></td>
                         <td class = "add-set" colspan="2" style="text-align: center; padding: 0; margin: 0;">
                             <button  onclick="addSet(this)" style="font-size: 12px; padding: 5px; margin: 0;">
@@ -48,7 +48,7 @@
                             </button>
                         </td>
                         <td></td>
-                    <tr>
+                    </tr>
 
                     <tr>
                         <td>Squats</td>
@@ -64,7 +64,7 @@
                         </td>
                         <td style="padding: 0px;"><button onclick="removeRow()" class="error"><img src="/static/images/delete.svg"></button></td>
                     </tr>
-                    <tr>
+                    <tr class="add-set">
                         <td></td>
                         <td class = "add-set" colspan="2" style="text-align: center; padding: 0; margin: 0;">
                             <button  onclick="addSet(this)" style="font-size: 12px; padding: 5px; margin: 0;">
@@ -73,7 +73,7 @@
                             </button>
                         </td>
                         <td></td>
-                    <tr>
+                    </tr>
                     
                     <tr>
                         <td>Leg Extensions</td>
@@ -89,7 +89,7 @@
                         </td>
                         <td style="padding: 0px;"><button onclick="removeRow()" class="error"><img src="/static/images/delete.svg"></button></td>
                     </tr>
-                    <tr>
+                    <tr class="add-set">
                         <td></td>
                         <td class = "add-set" colspan="2" style="text-align: center; padding: 0; margin: 0;">
                             <button  onclick="addSet(this)" style="font-size: 12px; padding: 5px; margin: 0;">
@@ -98,7 +98,7 @@
                             </button>
                         </td>
                         <td></td>
-                    <tr>
+                    </tr>
 
                     <tr>
                         <td>Leg Curls</td>
@@ -114,7 +114,7 @@
                         </td>
                         <td style="padding: 0px;"><button onclick="removeRow()" class="error"><img src="/static/images/delete.svg"></button></td>
                     </tr>
-                    <tr>
+                    <tr class="add-set">
                         <td></td>
                         <td class = "add-set" colspan="2" style="text-align: center; padding: 0; margin: 0;">
                             <button  onclick="addSet(this)" style="font-size: 12px; padding: 5px; margin: 0;">
@@ -123,7 +123,7 @@
                             </button>
                         </td>
                         <td></td>
-                    <tr>
+                    </tr>
 
                     <tr>
                         <td>Calf Raises</td>
@@ -139,16 +139,16 @@
                         </td>
                         <td style="padding: 0px;"><button onclick="removeRow()" class="error"><img src="/static/images/delete.svg"></button></td>
                     </tr>
-                    <tr>
+                    <tr class="add-set">
                         <td></td>
-                        <td class = "add-set" colspan="2" style="text-align: center; padding: 0; margin: 0;">
+                        <td class = "add-set" colspan="2" style="text-align: center;">
                             <button  onclick="addSet(this)" style="font-size: 12px; padding: 5px; margin: 0;">
                                 Add Set
                                 <img src="/static/images/add.svg">
                             </button>
                         </td>
                         <td></td>
-                    <tr>
+                    </tr>
             </tbody>
             </table>    
 
