@@ -86,7 +86,14 @@ function finishWorkout() {
     let workoutData = {};
 
     rows.forEach(row => {
-        const exercise = row.querySelector('td:first-child')?.textContent; // Get exercise name
+        // Gets the cell with the exercise name and handles the case where the name is inside an input box or inside the td
+        const cell = row.querySelector('td:first-child');
+        const exercise = cell
+        ? cell.querySelector('input') 
+        ? cell.querySelector('input').value 
+        : cell.textContent.trim()
+        : undefined;
+
         const reps = row.querySelectorAll('.reps'); // Get all the reps input elements in the row
         const weights = row.querySelectorAll('.weight'); // Get all the weight input elements in the row
 
