@@ -31,15 +31,15 @@
                 </div>
 
                 <ul>
-                    <li>Deadlifts<button onclick="removeRow()" class="error"><img src="/static/images/delete.svg"></button></li>
-                    <li>Squats<button onclick="removeRow()" class="error"><img src="/static/images/delete.svg"></li>
-                    <li>Leg Extensions<button onclick="removeRow()" class="error"><img src="/static/images/delete.svg"></li>
-                    <li>Leg Curls<button onclick="removeRow()" class="error"><img src="/static/images/delete.svg"></li>
-                    <li>Calf Raises<button onclick="removeRow()" class="error"><img src="/static/images/delete.svg"></li>
+                    <li>Deadlifts<button onclick="removeExercise()" class="error"><img src="/static/images/delete.svg"></button></li>
+                    <li>Squats<button onclick="removeExercise()" class="error"><img src="/static/images/delete.svg"></li>
+                    <li>Leg Extensions<button onclick="removeExercise()" class="error"><img src="/static/images/delete.svg"></li>
+                    <li>Leg Curls<button onclick="removeExercise()" class="error"><img src="/static/images/delete.svg"></li>
+                    <li>Calf Raises<button onclick="removeExercise()" class="error"><img src="/static/images/delete.svg"></li>
                 </ul>
 
 
-                <button>Add Exercise</button>
+                <button onclick="addExercise()">Add Exercise</button>
             </div>
 
             <div class="edit-program">
@@ -47,7 +47,7 @@
                     New Program
                     <img class="add" src="/static/images/new.svg">
                 </button>
-                <button class="edit-program-btn" style="color: #10a37f;">
+                <button onclick="saveProgram()" class="edit-program-btn" style="color: #10a37f;">
                     Save Program
                     <img class="new" style="filter: invert(45%) sepia(91%) saturate(398%) hue-rotate(115deg) brightness(94%) contrast(93%);" src="/static/images/check.svg">
                 </button>
@@ -74,5 +74,8 @@
             <span>Personal</span>
         </a>
     </nav>
+
+
+    <script src="/static/scripts/program.js"></script>
 </body>
 </html>

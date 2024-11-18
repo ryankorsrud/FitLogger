@@ -18,8 +18,8 @@ def init_db():
     
     cursor.execute('''CREATE TABLE IF NOT EXISTS program (
                         id INTEGER PRIMARY KEY AUTOINCREMENT,
-                        program_name TEXT,
-                        exercise TEXT
+                        day TEXT,
+                        program TEXT
                       )''')
     conn.commit()
     conn.close()
@@ -111,7 +111,19 @@ def get_workout_log():
 @app.route('/save_program', methods=['POST'])
 def save_program():
     data = request.json
+    day = data.get('day')
+    exercises = data.get('program')
 
+    conn = sqlite3.connect('workouts.db')
+    cursor = conn.cursor()
+
+    for exercise in exercises:
+        cursor.execute('INSERT INTO program (day, program) VALUES (?, ?)', (day, exercise))
+
+    conn.commit()
+    conn.close()
+
+    return jsonify({'status': 'success'})
 
 if __name__ == '__main__':
     init_db()

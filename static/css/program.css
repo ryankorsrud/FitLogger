@@ -21,8 +21,15 @@
     padding: 15px;
     padding-bottom: 0px;
     text-align: center;
+    gap: 10px;
+    width: 200px;
 }
 
+.program li input {
+    flex-grow: 1; /* Makes the input take up the remaining space */
+    width: 100%;  /* Ensures the input stretches to fit the available space */
+    box-sizing: border-box; /* Ensures padding/borders are included in the width */
+}
 
 .program button {
     background-color: white;
