@@ -17,7 +17,8 @@
 
     <main>
         <span>Current Program: Push-Pull-Legs</span>
-        <div>
+
+        <div class = "container">
             <div class="program">
                 <div class="day">
                     <button>
@@ -36,16 +37,19 @@
                     <li>Leg Curls<button onclick="removeRow()" class="error"><img src="/static/images/delete.svg"></li>
                     <li>Calf Raises<button onclick="removeRow()" class="error"><img src="/static/images/delete.svg"></li>
                 </ul>
+
+
+                <button>Add Exercise</button>
             </div>
 
             <div class="edit-program">
                 <button class="edit-program-btn">
-                    Add Exercise
-                    <img class="add" src="/static/images/add.svg">
+                    New Program
+                    <img class="add" src="/static/images/new.svg">
                 </button>
                 <button class="edit-program-btn" style="color: #10a37f;">
-                    New Program
-                    <img class="new" style="filter: invert(45%) sepia(91%) saturate(398%) hue-rotate(115deg) brightness(94%) contrast(93%);" src="/static/images/new.svg">
+                    Save Program
+                    <img class="new" style="filter: invert(45%) sepia(91%) saturate(398%) hue-rotate(115deg) brightness(94%) contrast(93%);" src="/static/images/check.svg">
                 </button>
             </div>
         </div>

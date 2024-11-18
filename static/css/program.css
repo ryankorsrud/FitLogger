@@ -1,3 +1,5 @@
+
+
 .program {
     background-color: white;
     padding: 20px;
@@ -5,7 +7,12 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
     min-width: 400px;
+    display: flex;
+    flex-direction: column; /* Stacks children vertically */
+    align-items: center;    /* Centers items horizontally */
+    justify-content: space-around; /* Aligns items to the top of the container */
 }
+
 
 .program li {
     display: flex;
@@ -50,6 +57,8 @@
     border-radius: 50%;
     cursor: pointer;
     transition: background-color 0.3s;
+    margin: 10px;
+
 }
 
 .day button img {

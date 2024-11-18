@@ -80,6 +80,36 @@ def save_workout():
 
 
 
+@app.route('/get_workout_log', methods=['GET'])
+def get_workout_log():
+    date = request.args.get('date')
+    print(date)
+    if not date:
+        return jsonify({'status': 'error', 'message': 'No date provided'}), 400
+
+    # Fetch workout data for the provided date
+    conn = sqlite3.connect('workouts.db')
+    cursor = conn.cursor()
+    
+    cursor.execute('SELECT exercise, reps, weight FROM workout WHERE date = ?', (date,))
+    rows = cursor.fetchall()
+
+    # Organize the data in a format similar to how it's saved
+    workout_data = {}
+    for row in rows:
+        exercise, reps, weight = row
+        if exercise not in workout_data:
+            workout_data[exercise] = [[], []]
+        workout_data[exercise][0].append(reps)
+        workout_data[exercise][1].append(weight)
+    print(workout_data)
+    conn.close()
+
+    return jsonify(workout_data)
+
+
+
+
 if __name__ == '__main__':
     init_db()
     app.run(debug=True)
