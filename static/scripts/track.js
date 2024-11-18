@@ -18,7 +18,7 @@ function addRow() {
     // Create new row for the exercise
     const exerciseRow = document.createElement('tr');
     exerciseRow.innerHTML = `
-        <td><input type="text" class="exercise-name" placeholder="Exercise Name"></td>
+        <td style="display: flex; justify-content: center;"><input style="width: 100%;" type="text" class="exercise-name" placeholder="Exercise"></td>
         <td>
             <ul>
                 <li><input class="reps" type="text" placeholder="Log"></li>
