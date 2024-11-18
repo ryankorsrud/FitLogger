@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="eng">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/track.css') }}">
+</head>
+
+<body>
+    <header>
+        <h3>Track</h3>
+    </header>
+
+    <main>
+        <div class="container">
+            <table class="workout-log">
+                <caption class="day">Monday, November 4, 2024</caption>
+                <thead>
+                    <th>Exercise</th>
+                    <th>Reps</th>
+                    <th>Weight (lbs)</th>
+                    <th></th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Deadlifts</td>
+                        <td>
+                            <ul>
+                                <li><input class="reps" type="text" placeholder="Log"></li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                <li><input class="weight" type="text" placeholder="Log"></li>
+                            </ul>
+                        </td>
+                        <td style="padding: 0px;"><button onclick="removeRow(this)" class="error"><img src="/static/images/delete.svg"></button></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class = "add-set" colspan="2" style="text-align: center; padding: 0; margin: 0;">
+                            <button  onclick="addSet(this)" style="font-size: 12px; padding: 5px; margin: 0;">
+                                Add Set
+                                <img src="/static/images/add.svg">
+                            </button>
+                        </td>
+                        <td></td>
+                    <tr>
+
+                    <tr>
+                        <td>Squats</td>
+                        <td>
+                            <ul>
+                                <li><input class="reps" type="text" placeholder="Log"></li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                <li><input class="weight" type="text" placeholder="Log"></li>
+                            </ul>
+                        </td>
+                        <td style="padding: 0px;"><button onclick="removeRow()" class="error"><img src="/static/images/delete.svg"></button></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class = "add-set" colspan="2" style="text-align: center; padding: 0; margin: 0;">
+                            <button  onclick="addSet(this)" style="font-size: 12px; padding: 5px; margin: 0;">
+                                Add Set
+                                <img src="/static/images/add.svg">
+                            </button>
+                        </td>
+                        <td></td>
+                    <tr>
+                    
+                    <tr>
+                        <td>Leg Extensions</td>
+                        <td>
+                            <ul>
+                                <li><input class="reps" type="text" placeholder="Log"></li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                <li><input class="weight" type="text" placeholder="Log"></li>
+                            </ul>
+                        </td>
+                        <td style="padding: 0px;"><button onclick="removeRow()" class="error"><img src="/static/images/delete.svg"></button></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class = "add-set" colspan="2" style="text-align: center; padding: 0; margin: 0;">
+                            <button  onclick="addSet(this)" style="font-size: 12px; padding: 5px; margin: 0;">
+                                Add Set
+                                <img src="/static/images/add.svg">
+                            </button>
+                        </td>
+                        <td></td>
+                    <tr>
+
+                    <tr>
+                        <td>Leg Curls</td>
+                        <td>
+                            <ul>
+                                <li><input class="reps" type="text" placeholder="Log"></li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                <li><input class="weight" type="text" placeholder="Log"></li>
+                            </ul>
+                        </td>
+                        <td style="padding: 0px;"><button onclick="removeRow()" class="error"><img src="/static/images/delete.svg"></button></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class = "add-set" colspan="2" style="text-align: center; padding: 0; margin: 0;">
+                            <button  onclick="addSet(this)" style="font-size: 12px; padding: 5px; margin: 0;">
+                                Add Set
+                                <img src="/static/images/add.svg">
+                            </button>
+                        </td>
+                        <td></td>
+                    <tr>
+
+                    <tr>
+                        <td>Calf Raises</td>
+                        <td>
+                            <ul>
+                                <li><input class="reps" type="text" placeholder="Log"></li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                <li><input class="weight" type="text" placeholder="Log"></li>
+                            </ul>
+                        </td>
+                        <td style="padding: 0px;"><button onclick="removeRow()" class="error"><img src="/static/images/delete.svg"></button></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td class = "add-set" colspan="2" style="text-align: center; padding: 0; margin: 0;">
+                            <button  onclick="addSet(this)" style="font-size: 12px; padding: 5px; margin: 0;">
+                                Add Set
+                                <img src="/static/images/add.svg">
+                            </button>
+                        </td>
+                        <td></td>
+                    <tr>
+            </tbody>
+            </table>    
+
+            <div class="edit-workout">
+                <button onclick="addRow()" class="edit-workout-btn">
+                    Add Exercise
+                    <img class="add" src="/static/images/add.svg">
+                </button>
+                <button onclick="finishWorkout()" class="edit-workout-btn" style="color: #10a37f;">
+                    Finish
+                    <img class="add" style="filter: invert(45%) sepia(91%) saturate(398%) hue-rotate(115deg) brightness(94%) contrast(93%);" src="/static/images/check.svg">
+                </button>
+            </div>
+        </div>
+    </main>
+
+
+    <nav>
+        <a href="/track">
+            <img src="/static/images/track.svg" alt="Track">
+            <span>Track</span>
+        </a>
+        <a href="/program">
+            <img src="/static/images/program.svg" alt="Program">
+            <span>Program</span>
+        </a>
+        <a href="/history">
+            <img src="/static/images/history.svg" alt="History">
+            <span>History</span>
+        </a>
+        <a href="/personal">
+            <img src="/static/images/personal.svg" alt="Personal">
+            <span>Personal</span>
+        </a>
+    </nav>
+
+
+    <script src="/static/scripts/track.js"></script>
+</body>
+
+
+</html>

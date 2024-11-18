@@ -1,0 +1,87 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    text-decoration: none;
+    list-style: none;
+}
+
+
+body {
+    background-color: #f6f6f9;
+}
+
+header {
+    display: flex;          /* Enables Flexbox layout */
+    align-items: center;    /* Vertically centers the text */
+    justify-content: center;
+    background-color: white;
+    color: black;
+    font-size: 24px;
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+    min-height: 105px;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+button:hover, nav a:hover {
+    background-color: #cdcdcd;
+}
+
+nav {
+    background-color: white;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+nav img {
+    width: 40px;
+    height: 40px;
+    filter: invert(59%) sepia(15%) saturate(458%) hue-rotate(173deg) brightness(90%) contrast(90%);
+}
+
+nav a {
+    background-color: white;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 6px;
+    transition: background-color 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-decoration: none; /* Removes the underline from the link */
+    display: block;
+    text-align: center;
+}
+
+nav span {
+    display: block;
+    margin-top: 5px; /* Space between the image and text */
+    font-size: 14px; /* Adjust text size */
+    color: #7d8da1;
+}
+
+.add, .new{
+    filter: invert(47%) sepia(54%) saturate(2790%) hue-rotate(172deg) brightness(104%) contrast(101%);
+}
+
+.error {
+    color: #f93a37;
+}
+
+.error img{
+    height: 15px;
+    width: 15px;
+    filter: invert(34%) sepia(61%) saturate(1685%) hue-rotate(333deg) brightness(95%) contrast(107%);
+}

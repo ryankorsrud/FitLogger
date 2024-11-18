@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="eng">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='/css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='/css/program.css') }}">
+</head>
+
+<body>
+    <header>
+        <h3>Program</h3>
+    </header>
+
+
+    <main>
+        <span>Current Program: Push-Pull-Legs</span>
+        <div>
+            <div class="program">
+                <div class="day">
+                    <button>
+                        <img src="/static/images/arrow.svg">
+                    </button>
+                    <span>Leg Day</span>
+                    <button>
+                        <img src="/static/images/arrow.svg" style="transform: rotate(180deg)">
+                    </button>
+                </div>
+
+                <ul>
+                    <li>Deadlifts<button onclick="removeRow()" class="error"><img src="/static/images/delete.svg"></button></li>
+                    <li>Squats<button onclick="removeRow()" class="error"><img src="/static/images/delete.svg"></li>
+                    <li>Leg Extensions<button onclick="removeRow()" class="error"><img src="/static/images/delete.svg"></li>
+                    <li>Leg Curls<button onclick="removeRow()" class="error"><img src="/static/images/delete.svg"></li>
+                    <li>Calf Raises<button onclick="removeRow()" class="error"><img src="/static/images/delete.svg"></li>
+                </ul>
+            </div>
+
+            <div class="edit-program">
+                <button class="edit-program-btn">
+                    Add Exercise
+                    <img class="add" src="/static/images/add.svg">
+                </button>
+                <button class="edit-program-btn" style="color: #10a37f;">
+                    New Program
+                    <img class="new" style="filter: invert(45%) sepia(91%) saturate(398%) hue-rotate(115deg) brightness(94%) contrast(93%);" src="/static/images/new.svg">
+                </button>
+            </div>
+        </div>
+    </main>
+
+
+    <nav>
+        <a href="/track">
+            <img src="/static/images/track.svg" alt="Track">
+            <span>Track</span>
+        </a>
+        <a href="/program">
+            <img src="/static/images/program.svg" alt="Program">
+            <span>Program</span>
+        </a>
+        <a href="/history">
+            <img src="/static/images/history.svg" alt="History">
+            <span>History</span>
+        </a>
+        <a href="/personal">
+            <img src="/static/images/personal.svg" alt="Personal">
+            <span>Personal</span>
+        </a>
+    </nav>
+</body>
+</html>

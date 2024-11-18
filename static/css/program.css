@@ -1,0 +1,94 @@
+.program {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    min-width: 400px;
+}
+
+.program li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    padding-bottom: 0px;
+    text-align: center;
+}
+
+
+.program button {
+    background-color: white;
+    border: none;
+    color: #7d8da1;
+    padding: 6px 6px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    font-size: 12px;
+    margin-left: 5px;
+}
+
+
+.program button:hover{
+    background-color: #cdcdcd;
+}
+
+
+.day {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+}
+
+.day button {
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 3px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.day button img {
+    width: 15px;
+    height: 15px;
+    filter: invert(47%) sepia(54%) saturate(2790%) hue-rotate(172deg) brightness(104%) contrast(101%);
+}
+
+.edit-program {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #0af;
+}
+
+
+.edit-program-btn {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border: none;
+    color: #0af;
+    padding: 5px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s;
+}
+
+
+.edit-program-btn img {
+    height: 20px;
+    width: 20px;
+    margin-left: 8px;
+}
+
+
+main span {
+    font-size: 18px;
+    font-weight: bold;
+}
