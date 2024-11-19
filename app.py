@@ -19,7 +19,8 @@ def init_db():
     cursor.execute('''CREATE TABLE IF NOT EXISTS program (
                         id INTEGER PRIMARY KEY AUTOINCREMENT,
                         day TEXT,
-                        program TEXT
+                        program TEXT,
+                        UNIQUE(day, program)
                       )''')
     conn.commit()
     conn.close()
@@ -118,7 +119,7 @@ def save_program():
     cursor = conn.cursor()
 
     for exercise in exercises:
-        cursor.execute('INSERT INTO program (day, program) VALUES (?, ?)', (day, exercise))
+        cursor.execute('INSERT INTO program (day, program) VALUES (?, ?) ON CONFLICT(day, program) DO NOTHING', (day, exercise))
 
     conn.commit()
     conn.close()
