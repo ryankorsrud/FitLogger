@@ -125,6 +125,32 @@ def save_program():
 
     return jsonify({'status': 'success'})
 
+
+@app.route('/get_program_day', methods=['GET'])
+def get_program_day():
+    day = request.args.get('day')
+    if not day:
+        return jsonify({'status': 'error', 'message': 'No day provided'}), 400
+
+
+    conn = sqlite3.connect('workouts.db')
+    cursor = conn.cursor()
+    print(day)
+    cursor.execute('SELECT program FROM program WHERE day = ?', (day,))
+    data = cursor.fetchall()
+
+    exercises = []
+    for val in data:
+        exercises.append(val)
+    
+    print(exercises)
+    conn.close()
+
+    return jsonify(exercises)
+
+        
+
+
 if __name__ == '__main__':
     init_db()
     app.run(debug=True)

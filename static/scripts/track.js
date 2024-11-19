@@ -60,12 +60,13 @@ function addSet(button) {
 }
 
 function finishWorkout() {
-    const unformattedDate = new Date(document.querySelector('.day').textContent);
+    const unformattedDate = new Date(document.querySelector('.day span').textContent);
+    
     const year = unformattedDate.getFullYear();
     const month = String(unformattedDate.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed
     const day = String(unformattedDate.getDate()).padStart(2, '0');
     const date = `${year}-${month}-${day}`
-    
+    console.log(date);
 
     const rows = document.querySelectorAll('.workout-log tbody tr'); // Get all the rows with exercises
 
@@ -116,4 +117,62 @@ function finishWorkout() {
         }
     })
     .catch(error => console.error('Error:', error));
+}
+
+
+
+function setProgramDay(){
+    const day = document.getElementById('selected-day').value;
+    const workoutLog = document.querySelector('.workout-log tbody');
+
+    if (!day){
+        return;
+    }
+
+    fetch(`/get_program_day?day=${day}`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.length === 0) {
+                return;
+            }
+
+
+            console.log(data);
+            data.forEach(exercise => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${exercise}</td>
+                    <td>
+                        <ul>
+                            <li><input class="reps" type="text" placeholder="Log"></li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li><input class="weight" type="text" placeholder="Log"></li>
+                        </ul>
+                    </td>
+                    <td style="padding: 0px;">
+                        <button onclick="removeRow(this)" class="error"><img src="/static/images/delete.svg"></button>
+                    </td>`;
+
+
+                workoutLog.appendChild(row);
+
+
+                const addSetRow = document.createElement('tr');
+                addSetRow.innerHTML = `
+                    <td></td>
+                    <td class="add-set" colspan="2" style="text-align: center; padding: 0; margin: 0;">
+                        <button onclick="addSet(this)" style="font-size: 12px; padding: 5px; margin: 0;">
+                            Add Set
+                            <img src="/static/images/add.svg">
+                        </button>
+                    </td>
+                    <td></td>
+                `;
+                workoutLog.appendChild(addSetRow);
+            });
+        }
+        )
 }

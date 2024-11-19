@@ -17,7 +17,14 @@
     <main>
         <div class="container">
             <table class="workout-log">
-                <caption class="day">Monday, November 4, 2024</caption>
+                <caption class="day">
+                    <span>Monday, November 4, 2024 </span>
+                    <select id="selected-day" onclick="setProgramDay()">
+                        <option value="Push">Push</option>
+                        <option value="Pull">Pull</option>
+                        <option value="Legs">Legs</option>
+                    </select>
+                </caption>
                 <thead>
                     <th>Exercise</th>
                     <th>Reps</th>
@@ -25,6 +32,7 @@
                     <th></th>
                 </thead>
                 <tbody>
+                    <!--
                     <tr>
                         <td>Deadlifts</td>
                         <td>
@@ -149,9 +157,11 @@
                         </td>
                         <td></td>
                     </tr>
-            </tbody>
-            </table>    
+                    -->
 
+            </tbody>
+
+            </table>    
             <div class="edit-workout">
                 <button onclick="addRow()" class="edit-workout-btn">
                     Add Exercise
