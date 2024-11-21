@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="eng">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Workouts</title>
+    <style>
+        /* Basic styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            position: relative;
+        }
+
+        h3 {
+            margin: 0;
+        }
+
+        /* Cross button for canceling action, positioned at the top-right of the screen */
+        .back-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: transparent;
+            border: none;
+            font-size: 24px;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .back-button:hover {
+            color: #f44336;
+        }
+
+        .search-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-container input {
+            width: 80%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .go-button {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 15px;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .go-button:hover {
+            background-color: #0056b3;
+        }
+
+        .workout-list {
+            padding: 20px;
+            background-color: #fff;
+            margin-top: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .workout-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .workout-item:last-child {
+            border-bottom: none;
+        }
+
+        .workout-item h4 {
+            margin: 0;
+            font-size: 18px;
+        }
+
+        .workout-item span {
+            color: #888;
+        }
+
+        select {
+            padding: 8px;
+            font-size: 16px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        .select-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 8px 15px;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .select-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <button class="back-button" onclick="goBack()">×</button>
+        <h3>Search for Workouts</h3>
+    </header>
+
+    <!-- Search Section -->
+    <div class="search-container">
+        <input type="text" id="search-bar" placeholder="Search for workouts...">
+        <button class="go-button" onclick="goToPage()">Go</button>
+    </div>
+
+    <!-- Workouts List -->
+    <div class="workout-list">
+        <div class="workout-item">
+            <div>
+                <h4>Running</h4>
+                <span>Target Area: Legs, Cardio</span>
+            </div>
+            <div>
+                <select>
+                    <option value="easy">Easy</option>
+                    <option value="medium">Medium</option>
+                    <option value="hard">Hard</option>
+                </select>
+                <button class="select-button">Select</button>
+            </div>
+        </div>
+
+        <div class="workout-item">
+            <div>
+                <h4>Push-ups</h4>
+                <span>Target Area: Chest, Arms</span>
+            </div>
+            <div>
+                <select>
+                    <option value="easy">Easy</option>
+                    <option value="medium">Medium</option>
+                    <option value="hard">Hard</option>
+                </select>
+                <button class="select-button">Select</button>
+            </div>
+        </div>
+
+        <div class="workout-item">
+            <div>
+                <h4>Squats</h4>
+                <span>Target Area: Legs, Core</span>
+            </div>
+            <div>
+                <select>
+                    <option value="easy">Easy</option>
+                    <option value="medium">Medium</option>
+                    <option value="hard">Hard</option>
+                </select>
+                <button class="select-button">Select</button>
+            </div>
+        </div>
+
+        <div class="workout-item">
+            <div>
+                <h4>Swimming</h4>
+                <span>Target Area: Full Body, Cardio</span>
+            </div>
+            <div>
+                <select>
+                    <option value="easy">Easy</option>
+                    <option value="medium">Medium</option>
+                    <option value="hard">Hard</option>
+                </select>
+                <button class="select-button">Select</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Function to handle going back to the previous page
+        function goBack() {
+            window.history.back();  // This will navigate back to the previous page
+        }
+
+        // Function to handle the "Go" button click action
+        function goToPage() {
+            const searchQuery = document.getElementById('search-bar').value;
+            // Logic for handling the search (for example, filter workouts or redirect to a search result page)
+            console.log(`Search Query: ${searchQuery}`);
+            // Redirect to a search results page or filter the list accordingly
+            window.location.href = '/search-results';  // Adjust this URL as per your requirements
+        }
+
+        // Cancel Action to reset the search
+        function cancelAction() {
+            document.getElementById('search-bar').value = '';  // Clear the search bar
+            window.location.href = '/';  // Or you can navigate to a specific page
+        }
+    </script>
+
+</body>
+</html>
