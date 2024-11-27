@@ -1,3 +1,114 @@
+.workout-log {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: block;
+    overflow-y: scroll;
+    max-height: 400px;
+    margin-bottom: 20px;
+}
+
+.workout-log caption{
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
+    font-size: 18px;
+    padding: 10px;
+}
+
+.workout-log caption select option{
+    text-align: center;
+}
+
+.workout-log ul li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin: 3px;
+}
+
+
+.workout-log li input {
+    border: 0px;
+    text-align: center;
+    font-size: 16px;
+    width: 75px;
+}
+
+.workout-log th,
+.workout-log td {
+    text-align: center;
+    padding: 15px;
+    padding-bottom: 0px;
+}
+
+
+.edit-workout {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    color: #0af;
+}
+
+.edit-workout-btn{
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border: none;
+    color: #0af;
+    padding: 5px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s;
+}
+
+.edit-workout-btn:hover{
+    background-color: #cdcdcd;
+}
+
+.edit-workout-btn img {
+    height: 20px;
+    width: 20px;
+    margin-left: 8px;
+}
+
+
+.add-set button {
+    display: inline-flex;
+    align-items: center;
+}
+
+
+.add-set button img{
+    margin-left: 3px;
+    height: 15px;
+    width: 15px;
+    filter: invert(56%) sepia(7%) saturate(919%) hue-rotate(173deg) brightness(97%) contrast(93%);
+}
+
+.workout-log button {
+    background-color: white;
+    border: none;
+    color: #7d8da1;
+    padding: 6px 6px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    font-size: 12px;
+}
+
+.workout-log button:hover {
+    background-color: #cdcdcd;
+}
+
+
+/*
 .workout-log{
     background-color: white;
     padding: 20px;
@@ -101,9 +212,11 @@
     display: inline-flex;
     align-items: center;
 }
+
+
 .add-set button img{
     margin-left: 3px;
     height: 15px;
     width: 15px;
     filter: invert(56%) sepia(7%) saturate(919%) hue-rotate(173deg) brightness(97%) contrast(93%);
-}
+}*/

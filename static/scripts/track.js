@@ -45,19 +45,23 @@ function addRow() {
 }
 
 function addSet(button) {
-    const row = button.closest('tr');
-    const exerciseRow = row.previousElementSibling;
-    const repsList = exerciseRow.querySelector('td:nth-child(2) ul');
-    const weightList = exerciseRow.querySelector('td:nth-child(3) ul');
+    const ulElement = button.closest('ul');
+    const trackingType = ulElement.closest('td').getAttribute('data-type');
+    const newSet = document.createElement('li');
 
-    const newRepsItem = document.createElement('li');
-    newRepsItem.innerHTML = '<input class="reps" type="text" placeholder="Log">';
-    repsList.appendChild(newRepsItem);
+    if (trackingType === 'reps-weight') {
+        newSet.innerHTML = `<input type="text" placeholder="Reps"><input type="text" placeholder="Weight">`;
+    } else if (trackingType === 'time') {
+        newSet.innerHTML = `<input type="text" placeholder="Time">`;
+    } else {
+        console.error('Unknown tracking type:', trackingType);
+        return;
+    }
 
-    const newWeightItem = document.createElement('li');
-    newWeightItem.innerHTML = '<input class="weight" type="text" placeholder="Log">';
-    weightList.appendChild(newWeightItem);
+    const addSetLi = ulElement.querySelector('.add-set');
+    ulElement.insertBefore(newSet, addSetLi);
 }
+
 
 function finishWorkout() {
     const unformattedDate = new Date(document.querySelector('.day span').textContent);

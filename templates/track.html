@@ -17,6 +17,97 @@
     <main>
         <div class="container">
             <table class="workout-log">
+
+                <caption class="day">
+                    <span>Monday, November 4, 2024 </span>
+                    <select id="selected-day" onclick="setProgramDay()">
+                        <option value="Push">Push</option>
+                        <option value="Pull">Pull</option>
+                        <option value="Legs">Legs</option>
+                    </select>
+                </caption>
+
+                <tbody>
+                    <tr>
+                        <td>Exercise</td>
+                        <td data-type="reps-weight">
+                            <ul>
+                                <li><input type="text" class="reps" placeholder="Reps"><input type="text" class="weight" placeholder="Weight"></li>
+                                <li class="add-set">
+                                    <button onclick="addSet(this)" style="font-size: 12px; padding: 5px; margin: 0;">
+                                        Add Set
+                                        <img src="/static/images/add.svg">
+                                    </button>
+                                </li>
+                            </ul>
+                        </td>
+                        <td style="padding: 0px;"><button onclick="removeRow(this)" class="error"><img src="/static/images/delete.svg"></button></td>
+                    </tr>
+                    <tr>
+                        <td>Exercise</td>
+                        <td data-type="reps-weight">
+                            <ul>
+                                <li><input type="text" placeholder="Reps"><input type="text" placeholder="Weight"></li>
+                                <li class="add-set">
+                                    <button onclick="addSet(this)" style="font-size: 12px; padding: 5px; margin: 0;">
+                                        Add Set
+                                        <img src="/static/images/add.svg">
+                                    </button>
+                                </li>
+                            </ul>
+                        </td>
+                        <td style="padding: 0px;"><button onclick="removeRow(this)" class="error"><img src="/static/images/delete.svg"></button></td>
+                    </tr>
+                    <tr>
+                        <td>Exercise</td>
+                        <td data-type="reps-weight">
+                            <ul>
+                                <li><input type="text" placeholder="Reps"><input type="text" placeholder="Weight"></li>
+                                <li class="add-set">
+                                    <button onclick="addSet(this)" style="font-size: 12px; padding: 5px; margin: 0;">
+                                        Add Set
+                                        <img src="/static/images/add.svg">
+                                    </button>
+                                </li>
+                            </ul>
+                        </td>
+                        <td style="padding: 0px;"><button onclick="removeRow(this)" class="error"><img src="/static/images/delete.svg"></button></td>
+                    </tr>
+                    <tr>
+                        <td>Exercise</td>
+                        <td data-type="reps-weight">
+                            <ul>
+                                <li><input type="text" placeholder="Reps"><input type="text" placeholder="Weight"></li>
+                                <li class="add-set">
+                                    <button class="add-set" onclick="addSet(this)" style="font-size: 12px; padding: 5px; margin: 0;">
+                                        Add Set
+                                        <img src="/static/images/add.svg">
+                                    </button>
+                                </li>
+                            </ul>
+                        </td>
+                        <td style="padding: 0px;"><button onclick="removeRow(this)" class="error"><img src="/static/images/delete.svg"></button></td>
+                    </tr>
+                    <tr>
+                        <td>Exercise</td>
+                        <td data-type="time">
+                            <ul>
+                                <li><input type="text" placeholder="Time"></li>
+                                <li class="add-set">
+                                    <button  onclick="addSet(this)" style="font-size: 12px; padding: 5px; margin: 0;">
+                                        Add Set
+                                        <img src="/static/images/add.svg">
+                                    </button>
+                                </li>
+                            </ul>
+                        </td>
+                        <td style="padding: 0px;"><button onclick="removeRow(this)" class="error"><img src="/static/images/delete.svg"></button></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!--
+            <table class="workout-log">
                 <caption class="day">
                     <span>Monday, November 4, 2024 </span>
                     <select id="selected-day" onclick="setProgramDay()">
@@ -32,7 +123,6 @@
                     <th></th>
                 </thead>
                 <tbody>
-                    <!--
                     <tr>
                         <td>Deadlifts</td>
                         <td>
@@ -157,11 +247,11 @@
                         </td>
                         <td></td>
                     </tr>
-                    -->
+                
 
             </tbody>
 
-            </table>    
+            </table>-->    
             <div class="edit-workout">
                 <button onclick="addRow()" class="edit-workout-btn">
                     Add Exercise
