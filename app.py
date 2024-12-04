@@ -1,10 +1,10 @@
-from flask import Flask, render_template, request, redirect, jsonify, send_from_directory, session
-from werkzeug.security import generate_password_hash, check_password_hash
+from flask import Flask, render_template, request, redirect, jsonify, send_from_directory, session # type: ignore
+from werkzeug.security import generate_password_hash, check_password_hash # type: ignore
 import sqlite3
 
 app = Flask(__name__)
-app.secret_key = 'your_secret_key'  # Set a secret key for session management
-
+#setting a secret key for session management
+app.secret_key = 'your_secret_key'  
 def init_db():
     conn = sqlite3.connect('workouts.db')
     cursor = conn.cursor()
@@ -28,6 +28,13 @@ def init_db():
                         username TEXT UNIQUE,
                         password TEXT
                       )''')
+    
+    #check if email id exists
+    cursor.execute("PRAGMA table_info(users)")
+    columns = [column[1] for column in cursor.fetchall()]
+    if "email" not in columns:
+        cursor.execute('ALTER TABLE users ADD COLUMN email TEXT') 
+    
     conn.commit()
     conn.close()
 
@@ -38,22 +45,25 @@ def signup():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
+        email = request.form['email']
         
-        # Hash the password
+        #encryptimg password
         hashed_password = generate_password_hash(password)
         
         conn = sqlite3.connect('workouts.db')
         cursor = conn.cursor()
 
-        # Insert the new user into the database
-        try:
-            cursor.execute('INSERT INTO users (username, password) VALUES (?, ?)', (username, hashed_password))
-            conn.commit()
+        cursor.execute('SELECT id FROM users WHERE username = ? OR email = ?', (username, email))
+        if cursor.fetchone():
             conn.close()
-            return redirect('/login')  # Redirect to login page after successful sign-up
-        except sqlite3.IntegrityError:
-            conn.close()
-            return 'Username already exists', 400
+            return 'Username or email already exists', 400
+
+        
+        cursor.execute('INSERT INTO users (username, password, email) VALUES (?, ?, ?)', 
+                       (username, hashed_password, email))
+        conn.commit()
+        conn.close()
+        return redirect('/login')  # Redirect to login page after successful sign-up
     return render_template('signup.html')
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -68,9 +78,9 @@ def login():
         stored_password = cursor.fetchone()
 
         if stored_password and check_password_hash(stored_password[0], password):
-            # Set a session variable for the logged-in user
+            #setting a session variable for the logged-in user
             session['username'] = username
-            return redirect('/')  # Redirect to home page after successful login
+            return redirect('/')  
         else:
             conn.close()
             return 'Invalid username or password', 400
@@ -79,10 +89,35 @@ def login():
 
 @app.route('/logout')
 def logout():
-    # Clear the session and redirect to login page
+    # clearing session
     session.pop('username', None)
     return redirect('/login')
 
+@app.route('/forgot-password', methods=['GET', 'POST'])
+def forgot_password():
+    if request.method == 'POST':
+        username = request.form['username']
+        new_password = request.form['new_password']
+        
+        conn = sqlite3.connect('workouts.db')
+        cursor = conn.cursor()
+        
+        #check if username already exists 
+        cursor.execute('SELECT id FROM users WHERE username = ?', (username,))
+        user = cursor.fetchone()
+        if user:
+            #if exists, then hash the passowrd
+            hashed_password = generate_password_hash(new_password)
+            # and update passsword
+            cursor.execute('UPDATE users SET password = ? WHERE username = ?', (hashed_password, username))
+            conn.commit()
+            conn.close()
+            return 'Password updated successfully! <a href="/login">Login here</a>'
+        else:
+            conn.close()
+            return 'Username does not exist', 400
+    
+    return render_template('forgot_password.html')
 
 
 
@@ -90,36 +125,36 @@ def logout():
 def serve_file(filename):
     return send_from_directory('static', filename)
 
-# Route to render the workout page
+
 @app.route('/')
 def index():
     if 'username' not in session:
-        return redirect('/login')  # Redirect to login page if not logged in
-    return render_template('track.html')
+        return redirect('/login')  
+    return render_template('track.html', username=session['username'])
 
 @app.route('/track')
 def track():
     if 'username' not in session:
-        return redirect('/login')  # Redirect to login page if not logged in
-    return render_template('track.html')
+        return redirect('/login')  
+    return render_template('track.html', username=session['username'])
 
 @app.route('/program')
 def program():
     if 'username' not in session:
-        return redirect('/login')  # Redirect to login page if not logged in
-    return render_template('program.html')
+        return redirect('/login')  
+    return render_template('program.html', username=session['username'])
 
 @app.route('/history')
 def history():
     if 'username' not in session:
-        return redirect('/login')  # Redirect to login page if not logged in
-    return render_template('history.html')
+        return redirect('/login')  
+    return render_template('history.html', username=session['username'])
 
 @app.route('/personal')
 def personal():
     if 'username' not in session:
-        return redirect('/login')  # Redirect to login page if not logged in
-    return render_template('personal.html')
+        return redirect('/login')  
+    return render_template('personal.html', username=session['username'])
 
 @app.route('/save_workout', methods=['POST'])
 def save_workout():
@@ -147,14 +182,14 @@ def get_workout_log():
     if not date:
         return jsonify({'status': 'error', 'message': 'No date provided'}), 400
 
-    # Fetch workout data for the provided date
+    
     conn = sqlite3.connect('workouts.db')
     cursor = conn.cursor()
     
     cursor.execute('SELECT exercise, reps, weight FROM workout WHERE date = ?', (date,))
     rows = cursor.fetchall()
 
-    # Organize the data in a format similar to how it's saved
+    
     workout_data = {}
     for row in rows:
         exercise, reps, weight = row
