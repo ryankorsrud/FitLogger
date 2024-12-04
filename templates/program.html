@@ -12,6 +12,19 @@
 <body>
     <header>
         <h3>Program</h3>
+        <div class="user-container">
+            {% if username %}
+            <div class="user-info">
+                
+                <div class="user-details"> <!-- User details above the logout button -->
+                    <span class="greeting">Hi, {{ username }}!</span>
+                </div>
+                <a href="{{ url_for('logout') }}" class="logout-btn">Logout</a>
+            </div>
+            {% else %}
+            <a href="{{ url_for('login') }}" class="login-btn">Login</a>
+            {% endif %}
+        </div>
     </header>
 
 
