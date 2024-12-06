@@ -32,31 +32,11 @@
         <span>Current Program: Push-Pull-Legs</span>
 
         <div class = "container">
-            <div class="program">
-                <div class="day">
-                    <button>
-                        <img src="/static/images/arrow.svg">
-                    </button>
-                    <span>Legs</span>
-                    <button>
-                        <img src="/static/images/arrow.svg" style="transform: rotate(180deg)">
-                    </button>
-                </div>
-
-                <ul>
-                    <li>Deadlifts<button onclick="removeExercise()" class="error"><img src="/static/images/delete.svg"></button></li>
-                    <li>Squats<button onclick="removeExercise()" class="error"><img src="/static/images/delete.svg"></li>
-                    <li>Leg Extensions<button onclick="removeExercise()" class="error"><img src="/static/images/delete.svg"></li>
-                    <li>Leg Curls<button onclick="removeExercise()" class="error"><img src="/static/images/delete.svg"></li>
-                    <li>Calf Raises<button onclick="removeExercise()" class="error"><img src="/static/images/delete.svg"></li>
-                </ul>
-
-
-                <button onclick="addExercise()">Add Exercise</button>
-            </div>
+            <!-- All logic for loading the workout program box is now in the js, when loaded render happens-->
+            <div id = "program" class="program"></div>
 
             <div class="edit-program">
-                <button class="edit-program-btn">
+                <button onclick="newProgram()" class="edit-program-btn">
                     New Program
                     <img class="add" src="/static/images/new.svg">
                 </button>
