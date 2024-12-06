@@ -26,7 +26,9 @@ let programs = [
         ]
     }
 ];
-let currentProgramIndex = 0;
+let currentProgramIndex = 0
+window.programs = programs;
+window.currentProgramIndex = currentProgramIndex;
 
 function addExercise(){
     const program = document.querySelector('.program ul');
@@ -66,7 +68,9 @@ function newProgram(){
     }
 
 function saveProgram(){
-    const day = document.querySelector('.day span').textContent;
+    const day = document.querySelector('.day span input')?
+                document.querySelector('.day span input').value:
+                document.querySelector('.day span').textContent;
     const exercises = document.querySelectorAll('.program ul li');
     console.log(exercises);
     let programData = [];
@@ -77,7 +81,18 @@ function saveProgram(){
         }
     });
 
-    //console.log(program);
+    if (!programs.some(i => i.name == day)) {
+        programs.push({
+            name: day,
+            exercises: programData
+            });
+        console.log("done");
+        console.log(programs);
+    } else {
+        programs[currentProgramIndex].exercises = programData;
+    }
+
+    console.log(programs);
 
     fetch('/save_program', {
         method: 'POST',
