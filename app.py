@@ -1,5 +1,5 @@
-from flask import Flask, render_template, request, redirect, jsonify, send_from_directory, session # type: ignore
-from werkzeug.security import generate_password_hash, check_password_hash # type: ignore
+from flask import Flask, render_template, request, redirect, jsonify, send_from_directory, session  # type: ignore
+from werkzeug.security import generate_password_hash, check_password_hash  # type: ignore
 import sqlite3
 
 app = Flask(__name__)
@@ -29,7 +29,7 @@ def init_db():
                         password TEXT
                       )''')
     
-    #check if email id exists
+    #checking if email id alreasy exists
     cursor.execute("PRAGMA table_info(users)")
     columns = [column[1] for column in cursor.fetchall()]
     if "email" not in columns:
@@ -63,7 +63,7 @@ def signup():
                        (username, hashed_password, email))
         conn.commit()
         conn.close()
-        return redirect('/login')  # Redirect to login page after successful sign-up
+        return redirect('/login')  
     return render_template('signup.html')
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -108,7 +108,7 @@ def forgot_password():
         if user:
             #if exists, then hash the passowrd
             hashed_password = generate_password_hash(new_password)
-            # and update passsword
+            #and updates passsword
             cursor.execute('UPDATE users SET password = ? WHERE username = ?', (hashed_password, username))
             conn.commit()
             conn.close()
@@ -206,15 +206,9 @@ def save_program():
     data = request.json
     day = data.get('day')
     exercises = data.get('program')
-    delete_exercises = data.get('deleteExercises',[])
 
     conn = sqlite3.connect('workouts.db')
     cursor = conn.cursor()
-
-    if delete_exercises:
-        for exercise in delete_exercises:
-            cursor.execute('DELETE FROM program WHERE day = ? AND program = ?',(day, exercise))
-
 
     for exercise in exercises:
         cursor.execute('INSERT INTO program (day, program) VALUES (?, ?) ON CONFLICT(day, program) DO NOTHING', (day, exercise))
@@ -239,14 +233,6 @@ def get_program_day():
     conn.close()
 
     return jsonify(exercises)
-
-@app.route('/get_list_of_days', methods=['GET'])
-def get_list_of_days():
-    conn = sqlite3.connect('workouts.db')
-    cursor = conn.cursor()
-    cursor.execute('SELECT DISTINCT day FROM program')
-    data = cursor.fetchall()
-    return (data)
 
 if __name__ == '__main__':
     init_db()

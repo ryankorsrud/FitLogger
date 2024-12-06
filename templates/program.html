@@ -16,7 +16,7 @@
             {% if username %}
             <div class="user-info">
                 
-                <div class="user-details"> <!-- User details above the logout button -->
+                <div class="user-details"> 
                     <span class="greeting">Hi, {{ username }}!</span>
                 </div>
                 <a href="{{ url_for('logout') }}" class="logout-btn">Logout</a>
@@ -32,11 +32,31 @@
         <span>Current Program: Push-Pull-Legs</span>
 
         <div class = "container">
-            <!-- All logic for loading the workout program box is now in the js, when loaded render happens-->
-            <div id = "program" class="program"></div>
+            <div class="program">
+                <div class="day">
+                    <button>
+                        <img src="/static/images/arrow.svg">
+                    </button>
+                    <span>Legs</span>
+                    <button>
+                        <img src="/static/images/arrow.svg" style="transform: rotate(180deg)">
+                    </button>
+                </div>
+
+                <ul>
+                    <li>Deadlifts<button onclick="removeExercise()" class="error"><img src="/static/images/delete.svg"></button></li>
+                    <li>Squats<button onclick="removeExercise()" class="error"><img src="/static/images/delete.svg"></li>
+                    <li>Leg Extensions<button onclick="removeExercise()" class="error"><img src="/static/images/delete.svg"></li>
+                    <li>Leg Curls<button onclick="removeExercise()" class="error"><img src="/static/images/delete.svg"></li>
+                    <li>Calf Raises<button onclick="removeExercise()" class="error"><img src="/static/images/delete.svg"></li>
+                </ul>
+
+
+                <button onclick="addExercise()">Add Exercise</button>
+            </div>
 
             <div class="edit-program">
-                <button onclick="newProgram()" class="edit-program-btn">
+                <button class="edit-program-btn">
                     New Program
                     <img class="add" src="/static/images/new.svg">
                 </button>

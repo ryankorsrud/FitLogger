@@ -1,5 +1,3 @@
-let programs = [];
-
 function removeRow() {
     const button = event.target.closest('button');
     const row = button.closest('tr'); // row containing exercise
@@ -130,9 +128,7 @@ function setProgramDay(){
     if (!day){
         return;
     }
-    //Resets the tbody,so that old items are not kept
-    workoutLog.innerHTML = '';
-    
+
     fetch(`/get_program_day?day=${day}`)
         .then(response => response.json())
         .then(data => {
@@ -180,48 +176,3 @@ function setProgramDay(){
         }
         )
 }
-
-function listOfDays(){
-    fetch(`/get_list_of_days`, {
-        method: 'GET',
-        headers: {'Content-Type':'application/json'},
-    }) 
-    .then(response => response.json())
-    .then(arrayOfPrograms => {
-        const YINT = arrayOfPrograms.map((day) => day[0]);
-        programs = YINT;
-    })
-    return new Promise(resolve => {
-        setTimeout(() => {
-            console.log('list of days completed');
-            resolve();
-        }, 50);  // Simulate delay
-    });
-}
-
-function makeSelector(){
-    const selector = document.querySelector('#selected-day');
-    selector.innerHTML = '<option value="" selected disabled>Select a day</option>';  // Clear any existing options (optional)
-
-    // Loop through the programs array
-    programs.forEach(program => {
-        // Create a new <option> element
-        const option = document.createElement('option');
-        option.value = program;  // Set the value of the option
-        option.textContent = program;  // Set the display text for the option
-        // Append the option to the select element
-        selector.appendChild(option);
-    });
-
-    if (programs.length == 0){
-        const noPrograms = document.querySelector('.day');
-        const noProgramMSG = document.createElement('p');
-        noProgramMSG.innerHTML = `There are no workout programs, you can make one on the Program tab.`
-        noPrograms.append(noProgramMSG);
-    }
-}
-
-document.addEventListener('DOMContentLoaded', async () => {
-    await listOfDays();
-    makeSelector();
-});
