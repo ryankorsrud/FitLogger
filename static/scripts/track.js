@@ -131,6 +131,7 @@ function setProgramDay(){
     if (!day){
         return;
     }
+    //Resets the tbody,so that old items are not kept
     workoutLog.innerHTML = '';
 
     fetch(`/get_program_day?day=${day}`)
@@ -187,8 +188,8 @@ function listOfDays(){
         headers: {'Content-Type':'application/json'},
     }) 
     .then(response => response.json())
-    .then(daysList => {
-        const YINT = daysList.map((day) => day[0]);
+    .then(arrayOfPrograms => {
+        const YINT = arrayOfPrograms.map((day) => day[0]);
         programs = YINT;
     })
     return new Promise(resolve => {
