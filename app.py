@@ -61,9 +61,7 @@ def personal():
 
 @app.route('/newt')
 def newt():
-    if 'username' not in session:
-        return redirect('/login')  
-    return render_template('newt.html', username=session['username'])
+    return render_template('personal.html')
 
 @app.route('/save_workout', methods=['POST'])
 def save_workout():
@@ -144,10 +142,9 @@ def get_program_day():
     if not day:
         return jsonify({'status': 'error', 'message': 'No day provided'}), 400
 
-
     conn = sqlite3.connect('workouts.db')
     cursor = conn.cursor()
-    print(day)
+
     cursor.execute('SELECT program FROM program WHERE day = ?', (day,))
     data = cursor.fetchall()
 
@@ -155,12 +152,17 @@ def get_program_day():
     for val in data:
         exercises.append(val)
     
-    print(exercises)
     conn.close()
-
     return jsonify(exercises)
 
-        
+@app.route('/get_list_of_days', methods=['GET'])
+def get_list_of_days():
+    conn = sqlite3.connect('workouts.db')
+    cursor = conn.cursor()
+    cursor.execute('SELECT DISTINCT day FROM program')
+    data = cursor.fetchall()
+    return (data)
+
 
 
 if __name__ == '__main__':
