@@ -25,6 +25,13 @@ header {
     min-height: 105px;
 }
 
+h3 {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);  
+    margin: 0;  
+}
+
 main {
     display: flex;
     flex-direction: column;
@@ -84,4 +91,42 @@ nav span {
     height: 15px;
     width: 15px;
     filter: invert(34%) sepia(61%) saturate(1685%) hue-rotate(333deg) brightness(95%) contrast(107%);
+}
+
+/*Logout button in top right corner*/
+.user-container {
+    display: flex;
+    justify-content: flex-end; 
+    align-items: center;
+    flex-direction: column; 
+    margin-left: auto; 
+}
+
+.user-info {
+    text-align: center; 
+}
+
+.greeting {
+    font-size: 14px; 
+    margin-bottom: 5px; 
+}
+
+.logout-btn {
+    background-color:#f0f0f0; 
+    color: red; 
+    padding: 4px 8px;  
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;  
+    border: none;
+    cursor: pointer;
+}
+
+.logout-btn:hover {
+    background-color: #bbb; 
+}
+
+.user-info span {
+    font-size: 16px;  
 }
