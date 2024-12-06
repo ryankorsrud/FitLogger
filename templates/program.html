@@ -19,25 +19,27 @@
         <span>Current Program: Push-Pull-Legs</span>
 
         <div class = "container">
-            <div class="program">
+            <div class="program"> <!--should this be a table?-->
                 <div class="day">
                     <button>
                         <img src="/static/images/arrow.svg">
                     </button>
-                    <span>Legs</span>
+                    <span><input class="program_name" type="text" value="Legs"></span>
                     <button>
                         <img src="/static/images/arrow.svg" style="transform: rotate(180deg)">
                     </button>
                 </div>
+                    <ul>
+                        <li><input type = "text" value="Legs in general"><button onclick="removeExercise()" class="error"><img src="/static/images/delete.svg"></li>
+                    </ul>
 
-                <ul>
-                    <li>Deadlifts<button onclick="removeExercise()" class="error"><img src="/static/images/delete.svg"></button></li>
-                    <li>Squats<button onclick="removeExercise()" class="error"><img src="/static/images/delete.svg"></li>
-                    <li>Leg Extensions<button onclick="removeExercise()" class="error"><img src="/static/images/delete.svg"></li>
-                    <li>Leg Curls<button onclick="removeExercise()" class="error"><img src="/static/images/delete.svg"></li>
-                    <li>Calf Raises<button onclick="removeExercise()" class="error"><img src="/static/images/delete.svg"></li>
-                </ul>
+                    <ul>
+                        <li><input type = "text" value="Leg raises"><button onclick="removeExercise()" class="error"><img src="/static/images/delete.svg"></li>
+                    </ul>
 
+                    <ul>
+                        <li><input type="text" value="Calf Raises"><button onclick="removeExercise()" class="error"><img src="/static/images/delete.svg"></li>
+                    </ul>
 
                 <button onclick="addExercise()">Add Exercise</button>
             </div>
@@ -72,6 +74,9 @@
         <a href="/personal">
             <img src="/static/images/personal.svg" alt="Personal">
             <span>Personal</span>
+        </a>
+        <a href = "/newt">
+            hidden txt remove
         </a>
     </nav>
 

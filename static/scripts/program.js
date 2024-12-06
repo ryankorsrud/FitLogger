@@ -17,7 +17,7 @@ function removeExercise(){
 
 
 function saveProgram(){
-    const day = document.querySelector('.day span').textContent;
+    const day = document.querySelector('.day span input').value;
     const exercises = document.querySelectorAll('.program ul li');
     console.log(exercises);
     let programData = [];
@@ -29,20 +29,36 @@ function saveProgram(){
     });
 
     //console.log(program);
-
-    fetch('/save_program', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-            day,
-            program: programData
-        })
-    })
+    console.log(day.value)
+    console.log(day)
+    fetch('/get_program_day?day=${day}', {
+        method: 'GET',
+        headers: {'Content-Type': 'application/json'},
+    }) 
     .then(response => response.json())
-    .then(data => {
-        if (data.status === 'success'){
-            alert('Workout saved successfully!');
-        }
+    .then(existingData => {
+        console.log(existingData);
+        const existingExercises = existingData.program || [];
+        const exercisesToDelete = existingExercises.filter(exercise => !programData.includes(exercise));
+    
+
+
+        fetch('/save_program', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                day,
+                program: programData,
+                deleteExercises: exercisesToDelete
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'success'){
+                alert('Workout saved successfully!');
+            }
+        })
+        .catch(error => console.error('Error:', error));
+        console.log(existingData);
     })
-    .catch(error => console.error('Error:', error));
-}
+} 

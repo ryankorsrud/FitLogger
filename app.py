@@ -59,6 +59,12 @@ def personal():
 
 
 
+@app.route('/newt')
+def newt():
+    if 'username' not in session:
+        return redirect('/login')  
+    return render_template('newt.html', username=session['username'])
+
 @app.route('/save_workout', methods=['POST'])
 def save_workout():
     data = request.json
@@ -114,9 +120,14 @@ def save_program():
     data = request.json
     day = data.get('day')
     exercises = data.get('program')
+    delete_exercises = data.get('deleteExercises',[])
 
     conn = sqlite3.connect('workouts.db')
     cursor = conn.cursor()
+
+    if delete_exercises:
+        for exercise in delete_exercises:
+            cursor.execute('DELETE FROM program WHERE day = ? AND program = ?',(day, exercise))
 
     for exercise in exercises:
         cursor.execute('INSERT INTO program (day, program) VALUES (?, ?) ON CONFLICT(day, program) DO NOTHING', (day, exercise))
