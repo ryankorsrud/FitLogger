@@ -1,6 +1,3 @@
-let programs = [];
-let currentProgramIndex = 0;
-
 function addExercise(){
     const program = document.querySelector('.program ul');
     const newListItem = document.createElement('li');
@@ -18,30 +15,9 @@ function removeExercise(){
     listItem.remove();
 }
 
-function newProgram(){
-    const program = document.getElementById('program');
-    program.innerHTML = ''
-    program.innerHTML += `<div class="day">
-                            <button onclick = "lastProgram()">
-                                <img src="/static/images/arrow.svg">
-                            </button>
-                            <span><input type="text" placeholder="Program Name"></span>
-                            <button onclick = "nextProgram()">
-                                <img src="/static/images/arrow.svg" style="transform: rotate(180deg)">
-                            </button>
-                        </div>
-                        <ul>
-                            <li><input type="text" placeholder="Exercise"><button onclick="removeExercise()" class="error"><img src="/static/images/delete.svg"></button></li>
-                        </ul>
-                        
-                        <button onclick="addExercise()">Add Exercise</button>
-                        `;
-    }
 
 function saveProgram(){
-    const day = document.querySelector('.day span input')?
-                document.querySelector('.day span input').value:
-                document.querySelector('.day span').textContent;
+    const day = document.querySelector('.day span').textContent;
     const exercises = document.querySelectorAll('.program ul li');
     console.log(exercises);
     let programData = [];
@@ -52,111 +28,21 @@ function saveProgram(){
         }
     });
 
-    fetch(`/get_program_day?day=${day}`, {
-        method: 'GET',
-        headers: {'Content-Type': 'application/json'},
-    }) 
-    .then(response => response.json())
-    .then(existingData => {
-        const existingExercises = existingData || [];
- 
-        const exercisesToDelete = existingExercises.filter(exercise => !programData.includes(exercise));
-        console.log(exercisesToDelete);
-        fetch('/save_program', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                day,
-                program: programData,
-                deleteExercises: exercisesToDelete
-            })
+    //console.log(program);
+
+    fetch('/save_program', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            day,
+            program: programData
         })
-        .then(response => response.json())
-        .then(data => {
-            if (data.status === 'success'){
-                alert('Workout saved successfully!');
-            }
-        })
-        .catch(error => console.error('Error:', error));
-        
     })
-}
-
-function nextProgram(){
-    currentProgramIndex = (currentProgramIndex + 1) % programs.length;
-    renderProgram();
-}
-
-
-function lastProgram(){
-    currentProgramIndex = (currentProgramIndex - 1 + programs.length) % programs.length;
-    renderProgram();
-}
-
-// This refreshes the box containing program, pulling from programs to fill the name of day and exercises
-function renderProgram(){
-    const program = programs[currentProgramIndex];
-    const programContainer = document.getElementById('program');
-    if (program == undefined) {
-        programContainer.innerHTML =    
-            `<div>
-            <span>No Existing Workout Programs Make a new one with the New Program button</span>
-            </div>`
-    } else {
-        programContainer.innerHTML = `
-            <div class="day">
-                <button onclick="lastProgram()">
-                    <img src="/static/images/arrow.svg">
-                </button>
-                <span>${program}</span>
-                <button onclick="nextProgram()">
-                    <img src="/static/images/arrow.svg" style="transform: rotate(180deg)">
-                </button>
-            </div>
-
-            <div>
-                <ul>
-
-                </ul>
-            </div>
-            <button onclick="addExercise()">Add Exercise</button>`;
-        fetch(`/get_program_day?day=${program}`, {
-            method: 'GET',
-            headers: {'Content-Type': 'application/json'},
-        }) 
-        .then(response => response.json())
-        .then(toList => {
-            const exercisesInDayX = toList;
-            const p_ul = document.querySelector('.program ul');
-            console.log(toList);
-                for(exercises in exercisesInDayX){
-                    const newListItem = document.createElement('li');
-                    newListItem.innerHTML = `<li>${exercisesInDayX[exercises]}<button onclick="removeExercise()" class="error"><img src="/static/images/delete.svg"></li>`;
-                    p_ul.append(newListItem);
-                }
-        });
-    }
-}
-
-function listOfDays(callback){
-    fetch(`/get_list_of_days`, {
-        method: 'GET',
-        headers: {'Content-Type':'application/json'},
-    }) 
     .then(response => response.json())
-    .then(daysList => {
-        const YINT = daysList.map((day) => day[0]);
-        programs = YINT;
+    .then(data => {
+        if (data.status === 'success'){
+            alert('Workout saved successfully!');
+        }
     })
-    return new Promise(resolve => {
-        setTimeout(() => {
-            console.log('list of days completed');
-            resolve();
-        }, 50);  // Simulate delay
-    });
+    .catch(error => console.error('Error:', error));
 }
-
-document.addEventListener('DOMContentLoaded', async () => {
-    await listOfDays();
-    renderProgram();
-});
