@@ -206,9 +206,15 @@ def save_program():
     data = request.json
     day = data.get('day')
     exercises = data.get('program')
+    delete_exercises = data.get('deleteExercises',[])
 
     conn = sqlite3.connect('workouts.db')
     cursor = conn.cursor()
+
+    if delete_exercises:
+        for exercise in delete_exercises:
+            cursor.execute('DELETE FROM program WHERE day = ? AND program = ?',(day, exercise))
+
 
     for exercise in exercises:
         cursor.execute('INSERT INTO program (day, program) VALUES (?, ?) ON CONFLICT(day, program) DO NOTHING', (day, exercise))
@@ -233,6 +239,15 @@ def get_program_day():
     conn.close()
 
     return jsonify(exercises)
+
+@app.route('/get_list_of_days', methods=['GET'])
+def get_list_of_days():
+    conn = sqlite3.connect('workouts.db')
+    cursor = conn.cursor()
+    cursor.execute('SELECT DISTINCT day FROM program')
+    data = cursor.fetchall()
+    return (data)
+
 
 if __name__ == '__main__':
     init_db()
