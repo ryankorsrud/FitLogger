@@ -107,4 +107,8 @@
     height: 15px;
     width: 15px;
     filter: invert(56%) sepia(7%) saturate(919%) hue-rotate(173deg) brightness(97%) contrast(93%);}
-    
+
+/* To change text color of tab/screen currently being viewed */
+nav a#currentScreen span  {
+    color: black; 
+}

@@ -1,0 +1,4 @@
+/* To change text color of tab/screen currently being viewed */
+nav a#currentScreen span  {
+    color: black; 
+}
