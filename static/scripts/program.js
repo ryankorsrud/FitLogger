@@ -140,7 +140,7 @@ function renderProgram(){
 }
 
 function alertHelp(){
-    alert("Days represents sets of workouts done in the same day of a routine.\nYou can add an exercise to an existing day/workout set or remove them with the red trash can button. \nEmpty fields will not be saved.\nIf all workouts in a day/set are deleted, the day will be deleted too.");
+    alert("Days represents sets of workouts done in the same day of a program.\nYou can add an exercise to an existing day/workout set or remove them with the red trash can button. \nEmpty fields will not be saved.\nIf all workouts in a day/set are deleted, the day will be deleted too.");
 }
 
 function listOfDays(callback){
