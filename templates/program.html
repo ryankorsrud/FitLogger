@@ -29,21 +29,36 @@
 
 
     <main>
-        <span>Current Program: Push-Pull-Legs</span>
-
+        <div class = "top">
+            <button onclick="cycleProgram()">
+                <img src="/static/images/arrow.svg">
+            </button>
+            <span>Current Program: Push-Pull-Legs</span>
+            <button onclick="cycleProgram()">
+                <img src="/static/images/arrow.svg" style="transform: rotate(180deg)">
+            </button>
+        </div>
+        <button class="help" onclick = "alertHelp()"><image src = "/static/images/help.svg"></image></button>
         <div class = "container">
-
+            
             <div id = "program" class="program">
                 <!-- All logic for loading the workout program box is now in the js, when loaded render happens-->
             </div>
 
             <div class="edit-program">
                 <button onclick="newProgram()" class="edit-program-btn">
-                    New Program
+                    New Day
                     <img class="add" src="/static/images/new.svg">
                 </button>
                 <button onclick="saveProgram()" class="edit-program-btn" style="color: #10a37f;">
                     Save Program
+                    <img class="new" style="filter: invert(45%) sepia(91%) saturate(398%) hue-rotate(115deg) brightness(94%) contrast(93%);" src="/static/images/check.svg">
+                </button>
+            </div>
+
+            <div id="selector" class="selector" contentEditable="true">
+                <button class="selector-btn" style="color: #10a37f;">
+                    Program Selected!
                     <img class="new" style="filter: invert(45%) sepia(91%) saturate(398%) hue-rotate(115deg) brightness(94%) contrast(93%);" src="/static/images/check.svg">
                 </button>
             </div>

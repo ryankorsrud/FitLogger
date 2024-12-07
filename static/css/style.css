@@ -119,6 +119,12 @@ nav span {
     color: #7d8da1;
 }
 
+.help img{
+    width: 20px;
+    height: 20px;
+    filter: invert(59%) sepia(15%) saturate(458%) hue-rotate(173deg) brightness(90%) contrast(90%);
+}
+
 .add, .new{
     filter: invert(47%) sepia(54%) saturate(2790%) hue-rotate(172deg) brightness(104%) contrast(101%);
 }

@@ -220,6 +220,12 @@ function makeSelector(){
     }
 }
 
+function alertHelp(){
+    if (true) {
+        alert("To track an/some exercise(s), select a day from the currently selected workout program or add an exercise to track. \nFields can be left empty and will not be stored. ");
+    }
+}
+
 document.addEventListener('DOMContentLoaded', async () => {
     await listOfDays();
     makeSelector();

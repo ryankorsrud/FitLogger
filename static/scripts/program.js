@@ -81,17 +81,19 @@ function saveProgram(){
     })
 }
 
+//Shoule be nextDay
 function nextProgram(){
     currentProgramIndex = (currentProgramIndex + 1) % programs.length;
     renderProgram();
 }
 
-
+//Shoule be lastDay
 function lastProgram(){
     currentProgramIndex = (currentProgramIndex - 1 + programs.length) % programs.length;
     renderProgram();
 }
 
+//Should be renderDay
 // This refreshes the box containing program, pulling from programs to fill the name of day and exercises
 function renderProgram(){
     const program = programs[currentProgramIndex];
@@ -99,7 +101,7 @@ function renderProgram(){
     if (program == undefined) {
         programContainer.innerHTML =    
             `<div>
-            <span>No Existing Workout Programs Make a new one with the New Program button</span>
+            <p>No existing days(set of workout) within this program.</p><p>Add a new day with the New Day button</p>
             </div>`
     } else {
         programContainer.innerHTML = `
@@ -137,6 +139,10 @@ function renderProgram(){
     }
 }
 
+function alertHelp(){
+    alert("Days represents sets of workouts done in the same day of a routine.\nYou can add an exercise to an existing day/workout set or remove them with the red trash can button. \nEmpty fields will not be saved.\nIf all workouts in a day/set are deleted, the day will be deleted too.");
+}
+
 function listOfDays(callback){
     fetch(`/get_list_of_days`, {
         method: 'GET',
@@ -155,6 +161,47 @@ function listOfDays(callback){
     });
 }
 
+function cycleProgram(){
+    const program = document.querySelector('.top');
+    program.innerHTML = `
+    <button onclick="refreshPg()">
+        <img src="/static/images/arrow.svg">
+    </button>
+    <span>Program: Just Upper Body</span>
+    <button onclick="cycleProgram()">
+        <img src="/static/images/arrow.svg" style="transform: rotate(180deg)">
+    </button>`
+    const day = document.getElementById('program');
+    day.innerHTML = `
+    <div class="day">
+                <button onclick="">
+                    <img src="/static/images/arrow.svg">
+                </button>
+                <span>Upper Body</span>
+                <button onclick="">
+                    <img src="/static/images/arrow.svg" style="transform: rotate(180deg)">
+                </button>
+            </div>
+
+            <div>
+                <ul>
+                <li>Behcn Press<button onclick="removeExercise()" class="error"><img src="/static/images/delete.svg"></li>
+                <li>Curls<button onclick="removeExercise()" class="error"><img src="/static/images/delete.svg"></li>
+                <li>Shoulder Raises<button onclick="removeExercise()" class="error"><img src="/static/images/delete.svg"></li>
+                <li>Lateral Pulldowns<button onclick="removeExercise()" class="error"><img src="/static/images/delete.svg"></li>
+                </ul>
+            </div>
+            <button onclick="addExercise()">Add Exercise</button>`
+    const buttonChange = document.getElementById('selector');
+    buttonChange.innerHTML = `
+    <button class="selector-btn" style="color: #10a37f;">
+                    Select Program
+                </button>`
+}
+
+function refreshPg(){
+    location.reload();
+}
 document.addEventListener('DOMContentLoaded', async () => {
     await listOfDays();
     renderProgram();
