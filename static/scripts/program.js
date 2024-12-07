@@ -168,7 +168,7 @@ function cycleProgram(){
         <img src="/static/images/arrow.svg">
     </button>
     <span>Program: Just Upper Body</span>
-    <button onclick="cycleProgram()">
+    <button onclick="refreshPg()">
         <img src="/static/images/arrow.svg" style="transform: rotate(180deg)">
     </button>`
     const day = document.getElementById('program');
@@ -194,14 +194,33 @@ function cycleProgram(){
             <button onclick="addExercise()">Add Exercise</button>`
     const buttonChange = document.getElementById('selector');
     buttonChange.innerHTML = `
-    <button class="selector-btn" style="color: #10a37f;">
+                <button class="selector-btn" style="color: #10a37f;">
                     Select Program
+                    <img class="new" style="filter: invert(45%) sepia(91%) saturate(398%) hue-rotate(115deg) brightness(94%) contrast(93%);" src="/static/images/Sq_blank.svg.png">
+                </button>
+                <button class="selector-btn" style="color: #10a37f;">
+                    New Program
+                    <img class="new" style="filter: invert(45%) sepia(91%) saturate(398%) hue-rotate(115deg) brightness(94%) contrast(93%);" src="/static/images/Sq_blank.svg.png">
+                </button>`
+    document.querySelector('.edit-program').innerHTML = `
+                <button onclick="newProgram()" class="edit-program-btn">
+                    New Day
+                    <img class="add" src="/static/images/new.svg">
+                </button>
+                <button onclick="fauxSave()" class="edit-program-btn" style="color: #10a37f;">
+                    Save Program
+                    <img class="new" style="filter: invert(45%) sepia(91%) saturate(398%) hue-rotate(115deg) brightness(94%) contrast(93%);" src="/static/images/check.svg">
                 </button>`
 }
 
 function refreshPg(){
     location.reload();
 }
+
+function fauxSave(){
+    alert('Workout saved successfully!');
+}
+
 document.addEventListener('DOMContentLoaded', async () => {
     await listOfDays();
     renderProgram();
