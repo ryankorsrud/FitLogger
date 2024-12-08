@@ -24,7 +24,7 @@ function newProgram(){
                             <button onclick = "lastProgram()">
                                 <img src="/static/images/arrow.svg">
                             </button>
-                            <span><input type="text" placeholder="Program Name"></span>
+                            <span><input type="text" placeholder="Title of Day (eg. Monday)"></span>
                             <button onclick = "nextProgram()">
                                 <img src="/static/images/arrow.svg" style="transform: rotate(180deg)">
                             </button>
