@@ -13,11 +13,11 @@
 3. Type in a password.  
 4. Enter an email address. A fake email address such as "name@email.com" works.  
 5. Click Sign up.  
-You will then be taken back to the Log In screen  
+You will then be taken back to the Log In screen.  
 ##### Logging In  
 7. Enter the username and password for the account you have created.  
-8. Click "Login"  
-You will then be taken to the "Track" screen  
+8. Click "Login".  
+You will then be taken to the "Track" screen.  
 ##### Tracking/Logging Exercises from a Program  
 10. Click the "Select a day" dropdown box.  
 11. Select a program.  
@@ -33,20 +33,20 @@ The exersices of the selected program are now displayed.
 The logged workouts are displayed.  
 ##### Adding a New Day to a Program  
 19. Click on "Program" Tab. The "Current Program" should be displayed.
-20. Click on the "New Day" button
+20. Click on the "New Day" button.
 21. Enter the title for the day, and the exercise(s).
 22. Click "Add Exercise" to enter another exersice (optional).
 23. Click "Save Program".  
-The new and/or modified program will now be reflected when selecting a day on the "Track" screen
+The new and/or modified program will now be reflected when selecting a day on the "Track" screen.
 ##### Remove a Day from a Program  
 25. Click on "Program" Tab. The "Current Program" should be displayed.
-26. Use the corresponding left and right arrows to navigate to the day you want to remove
+26. Use the corresponding left and right arrows to navigate to the day you want to remove.
 27. Remove all of its exersices by clicking the red trash icon next to each exersise.
 28. Click "Save Program".
 ##### Enabling Workout Reminders
 29. Click on "Personal" Tab.  
-30. Toggle on the "Enable Workout Reminders" button
+30. Toggle on the "Enable Workout Reminders" button.
 31. Click the clock icon below "Set Reminder Time:".
 32. Enter the time of day that you wish to receive a workout reminder.
-##### Logout
+##### Logging Out
 33. Click the "Logout" button in the top-right corner.
